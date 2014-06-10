@@ -9,11 +9,17 @@ namespace MySingularApplication.Configuration
     /// <summary>
     /// My app config
     /// </summary>
-    public class MyApplicationConfig : ISingularApplication
+    public class MyApplicationConfig : SingularApplicationBase
     {
-        public bool IsMasterApplication
+        /// <summary>
+        /// Configure
+        /// </summary>
+        /// <param name="config"></param>
+        public override void Configure(SingularApplicationConfigurationRoot config)
         {
-            get { return true; }
+            config
+                .IsMasterApplication()
+                .HasName("My first application");
         }
     }
 }

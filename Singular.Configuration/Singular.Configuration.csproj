@@ -39,9 +39,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ISingularApplication.cs" />
+    <Compile Include="ApplicationConfigurationModel.cs" />
+    <Compile Include="SingularApplicationConfigurationRoot.cs" />
     <Compile Include="ISingularConfigurationFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SingularApplicationBase.cs" />
     <Compile Include="SingularConfigurationFactory.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

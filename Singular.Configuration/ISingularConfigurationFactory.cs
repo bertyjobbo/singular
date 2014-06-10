@@ -11,11 +11,16 @@ namespace Singular.Configuration
         /// <summary>
         /// Applications
         /// </summary>
-        IList<ISingularApplication> Applications { get; }
+        IList<ApplicationConfigurationModel> ApplicationsWithConfiguration { get; }
+
+        /// <summary>
+        /// Applications
+        /// </summary>
+        IList<SingularApplicationBase> Applications { get; }
 
         /// <summary>
         /// Master application
         /// </summary>
-        ISingularApplication MasterApplication { get; }
+        SingularApplicationBase MasterApplication { get; }
     }
 }

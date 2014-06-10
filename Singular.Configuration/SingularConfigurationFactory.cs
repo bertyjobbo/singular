@@ -14,7 +14,7 @@ namespace Singular.Configuration
         /// <summary>
         /// Interface type
         /// </summary>
-        private readonly Type _iAppInterfaceType = typeof (ISingularApplication);
+        private readonly Type _appBaseType = typeof(SingularApplicationBase);
 
         /// <summary>
         /// Singleton constructor
@@ -48,20 +48,36 @@ namespace Singular.Configuration
         /// </summary>
         private void setApplications()
         {
-            Applications = new List<ISingularApplication>();
+            // set data store
+            ApplicationsWithConfiguration = new List<ApplicationConfigurationModel>();
 
+            // loop assemblies
             foreach (var assembly in _assemblies)
             {
                 // find application types
-                var appTypes = assembly.GetTypes().Where(x => x.GetInterfaces().Contains(_iAppInterfaceType));
+                var appTypes = assembly.GetTypes().Where(x => x.IsSubclassOf(_appBaseType));
 
                 // loop them and add
                 foreach (var appType in appTypes)
                 {
-                    var app = (ISingularApplication) Activator.CreateInstance(appType);
-                    Applications.Add(app);
+                    var rootConfig = new SingularApplicationConfigurationRoot();
+                    
+                    var app = (SingularApplicationBase) Activator.CreateInstance(appType);
+                    
+                    rootConfig.Application = app;
+                    
+                    app.Configure(rootConfig);
+                    
+                    ApplicationsWithConfiguration.Add(new ApplicationConfigurationModel
+                    {
+                        Application = app,
+                        ConfigurationRoot = rootConfig
+                    });
                 }
             }
+
+            // finally
+            Applications = ApplicationsWithConfiguration.Select(x => x.Application).ToList();
         }
 
         /// <summary>
@@ -70,13 +86,13 @@ namespace Singular.Configuration
         private void setMasterApplication()
         {
             // check error
-            var isTooManyError = Applications.Count(x => x.IsMasterApplication) > 1;
+            var isTooManyError = ApplicationsWithConfiguration.Count(x => x.Application.IsMasterApplication) > 1;
             if(isTooManyError) throw new Exception("Too many master applications");
-            var isTooFewError = Applications.Count(x => x.IsMasterApplication) < 1;
+            var isTooFewError = ApplicationsWithConfiguration.Count(x => x.Application.IsMasterApplication) < 1;
             if (isTooFewError) throw new Exception("No master application");
             
             // set master
-            MasterApplication = Applications.Single(x => x.IsMasterApplication);
+            MasterApplication = ApplicationsWithConfiguration.Single(x => x.Application.IsMasterApplication).Application;
         }
 
         /// <summary>
@@ -100,11 +116,16 @@ namespace Singular.Configuration
         /// <summary>
         /// Applications
         /// </summary>
-        public IList<ISingularApplication> Applications { get; private set; }
+        public IList<ApplicationConfigurationModel> ApplicationsWithConfiguration { get; private set; }
+
+        /// <summary>
+        /// Apps
+        /// </summary>
+        public IList<SingularApplicationBase> Applications { get; private set; }
 
         /// <summary>
         /// Master application
         /// </summary>
-        public ISingularApplication MasterApplication { get; private set; }
+        public SingularApplicationBase MasterApplication { get; private set; }
     }
 }
