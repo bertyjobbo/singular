@@ -53,6 +53,16 @@
     <Compile Include="FluentApiTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MySingularApplication\MySingularApplication.csproj">
+      <Project>{d41e375f-2f40-4ec3-bb99-109cfdff2605}</Project>
+      <Name>MySingularApplication</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Singular.Configuration\Singular.Configuration.csproj">
+      <Project>{844CD718-761B-4DFF-9CE8-704A6F4AA019}</Project>
+      <Name>Singular.Configuration</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
       <ItemGroup>

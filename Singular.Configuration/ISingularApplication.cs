@@ -11,6 +11,9 @@ namespace Singular.Configuration
     /// </summary>
     public interface ISingularApplication
     {
-
+        /// <summary>
+        /// Is master application
+        /// </summary>
+        bool IsMasterApplication { get; }
     }
 }

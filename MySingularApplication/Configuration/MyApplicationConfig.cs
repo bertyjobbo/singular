@@ -11,6 +11,9 @@ namespace MySingularApplication.Configuration
     /// </summary>
     public class MyApplicationConfig : ISingularApplication
     {
-
+        public bool IsMasterApplication
+        {
+            get { return true; }
+        }
     }
 }
