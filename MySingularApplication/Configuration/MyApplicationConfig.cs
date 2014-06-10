@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using MySingularApplication.Defaults;
 using Singular.Configuration;
 
 namespace MySingularApplication.Configuration
@@ -17,9 +18,19 @@ namespace MySingularApplication.Configuration
         /// <param name="config"></param>
         public override void Configure(SingularApplicationConfigurationRoot config)
         {
-            config
-                .IsMasterApplication()
-                .HasName("My first application");
+            
+        }
+
+
+        /// <summary>
+        /// App id
+        /// </summary>
+        public override Guid ApplicationId
+        {
+            get
+            {
+                return MySingularDefaults.AppId; 
+            }
         }
     }
 }

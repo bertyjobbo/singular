@@ -62,6 +62,10 @@
       <Project>{844CD718-761B-4DFF-9CE8-704A6F4AA019}</Project>
       <Name>Singular.Configuration</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Singular.Web.Admin\Singular.Web.Admin.csproj">
+      <Project>{23dfcbfd-5c8c-4e4b-8993-75b5c2881b86}</Project>
+      <Name>Singular.Web.Admin</Name>
+    </ProjectReference>
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">

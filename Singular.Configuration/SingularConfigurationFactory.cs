@@ -78,6 +78,7 @@ namespace Singular.Configuration
 
             // finally
             Applications = ApplicationsWithConfiguration.Select(x => x.Application).ToList();
+            AdminSections = Applications.SelectMany(x => x.AdminSections).ToList();
         }
 
         /// <summary>
@@ -127,5 +128,10 @@ namespace Singular.Configuration
         /// Master application
         /// </summary>
         public SingularApplicationBase MasterApplication { get; private set; }
+
+        /// <summary>
+        /// Admin sections
+        /// </summary>
+        public IList<SingularAdminSection> AdminSections { get; set; }
     }
 }
