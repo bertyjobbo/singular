@@ -1,5 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Reflection;
+using Castle.MicroKernel.Registration;
 
 namespace Singular.Configuration
 {
@@ -8,6 +10,11 @@ namespace Singular.Configuration
     /// </summary>
     public interface ISingularConfigurationFactory
     {
+        /// <summary>
+        /// Init
+        /// </summary>
+        void Init();
+
         /// <summary>
         /// Applications
         /// </summary>
@@ -22,5 +29,16 @@ namespace Singular.Configuration
         /// Master application
         /// </summary>
         SingularApplicationBase MasterApplication { get; }
+
+        /// <summary>
+        /// Installers
+        /// </summary>
+        IList<IWindsorInstaller> Installers { get; set; }
+
+        /// <summary>
+        /// Add installer
+        /// </summary>
+        /// <param name="installer"></param>
+        void AddInstaller(IWindsorInstaller installer);
     }
 }

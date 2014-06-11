@@ -1,4 +1,5 @@
 ﻿using System;
+using Castle.MicroKernel.Registration;
 
 namespace Singular.Configuration
 {
@@ -32,11 +33,27 @@ namespace Singular.Configuration
             return this;
         }
 
+        /// <summary>
+        /// Add admin section
+        /// </summary>
+        /// <param name="action"></param>
+        /// <returns></returns>
         public SingularApplicationConfigurationRoot WithAdminSection(Action<SingularAdminSection> action)
         {
             var section = new SingularAdminSection();
             action.Invoke(section);
             Application.AdminSections.Add(section);
+            return this;
+        }
+
+        /// <summary>
+        /// Set installer
+        /// </summary>
+        /// <param name="installer"></param>
+        /// <returns></returns>
+        public SingularApplicationConfigurationRoot HasInstaller(IWindsorInstaller installer)
+        {
+            Application.Installer = installer;
             return this;
         }
     }

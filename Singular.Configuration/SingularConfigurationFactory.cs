@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Reflection;
+using Castle.Core.Internal;
+using Castle.MicroKernel.Registration;
 
 namespace Singular.Configuration
 {
@@ -21,6 +23,14 @@ namespace Singular.Configuration
         /// </summary>
         private SingularConfigurationFactory()
         {
+            
+        }
+
+        /// <summary>
+        /// Init
+        /// </summary>
+        public void Init()
+        {
             setAssemblies();
             setApplications();
             setMasterApplication();
@@ -33,9 +43,9 @@ namespace Singular.Configuration
         {
             _assemblies = new List<Assembly>();
 
-            var pathToBin = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+            var pathToBin = System.IO.Path.Combine(System.AppDomain.CurrentDomain.BaseDirectory, "bin");
 
-            foreach (var dllPath in Directory.GetFiles(pathToBin,"*.dll"))
+            foreach (var dllPath in Directory.GetFiles(pathToBin, "*.dll"))
             {
                 var assemblyName = AssemblyName.GetAssemblyName(dllPath);
                 var assembly = Assembly.Load(assemblyName);
@@ -61,13 +71,13 @@ namespace Singular.Configuration
                 foreach (var appType in appTypes)
                 {
                     var rootConfig = new SingularApplicationConfigurationRoot();
-                    
-                    var app = (SingularApplicationBase) Activator.CreateInstance(appType);
-                    
+
+                    var app = (SingularApplicationBase)Activator.CreateInstance(appType);
+
                     rootConfig.Application = app;
-                    
+
                     app.Configure(rootConfig);
-                    
+
                     ApplicationsWithConfiguration.Add(new ApplicationConfigurationModel
                     {
                         Application = app,
@@ -79,6 +89,10 @@ namespace Singular.Configuration
             // finally
             Applications = ApplicationsWithConfiguration.Select(x => x.Application).ToList();
             AdminSections = Applications.SelectMany(x => x.AdminSections).ToList();
+            Applications.ForEach(x =>
+            {
+                if(x.Installer != null) AddInstaller(x.Installer);
+            });
         }
 
         /// <summary>
@@ -88,10 +102,10 @@ namespace Singular.Configuration
         {
             // check error
             var isTooManyError = ApplicationsWithConfiguration.Count(x => x.Application.IsMasterApplication) > 1;
-            if(isTooManyError) throw new Exception("Too many master applications");
+            if (isTooManyError) throw new Exception("Too many master applications");
             var isTooFewError = ApplicationsWithConfiguration.Count(x => x.Application.IsMasterApplication) < 1;
             if (isTooFewError) throw new Exception("No master application");
-            
+
             // set master
             MasterApplication = ApplicationsWithConfiguration.Single(x => x.Application.IsMasterApplication).Application;
         }
@@ -128,6 +142,21 @@ namespace Singular.Configuration
         /// Master application
         /// </summary>
         public SingularApplicationBase MasterApplication { get; private set; }
+
+        /// <summary>
+        /// Installers
+        /// </summary>
+        public IList<IWindsorInstaller> Installers { get; set; }
+
+        /// <summary>
+        /// Add installer
+        /// </summary>
+        /// <param name="installer"></param>
+        public void AddInstaller(IWindsorInstaller installer)
+        {
+            if (Installers == null) Installers = new List<IWindsorInstaller>();
+            Installers.Add(installer);
+        }
 
         /// <summary>
         /// Admin sections

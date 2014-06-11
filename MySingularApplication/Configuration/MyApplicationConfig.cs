@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using MySingularApplication.Defaults;
+using MySingularApplication.IOC;
 using Singular.Configuration;
 
 namespace MySingularApplication.Configuration
@@ -18,7 +19,8 @@ namespace MySingularApplication.Configuration
         /// <param name="config"></param>
         public override void Configure(SingularApplicationConfigurationRoot config)
         {
-            
+            config
+                .HasInstaller(new MySingularInstaller());
         }
 
 

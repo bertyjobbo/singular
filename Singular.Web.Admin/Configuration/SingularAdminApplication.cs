@@ -1,6 +1,7 @@
 ﻿using System;
 using Singular.Configuration;
 using Singular.Web.Admin.Defaults;
+using Singular.Web.Admin.IOC;
 
 namespace Singular.Web.Admin.Configuration
 {
@@ -18,6 +19,8 @@ namespace Singular.Web.Admin.Configuration
             config
 
                 .IsMasterApplication()
+
+                .HasInstaller(new SingularAdminInstaller())
 
                 .Named(SingularAdminDefaults.APP_NAME)
 

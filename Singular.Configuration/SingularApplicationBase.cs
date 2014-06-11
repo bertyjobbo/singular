@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using Castle.MicroKernel.Registration;
 
 namespace Singular.Configuration
 {
@@ -47,5 +48,10 @@ namespace Singular.Configuration
         /// Admin sections
         /// </summary>
         public IList<SingularAdminSection> AdminSections { get; private set; }
+
+        /// <summary>
+        /// Installer
+        /// </summary>
+        public IWindsorInstaller Installer { get; set; }
     }
 }
