@@ -7,6 +7,20 @@ namespace Singular.Web.Admin
         public override void RegisterArea(AreaRegistrationContext context)
         {
             context.MapRoute(
+                "Singular.Web.Admin.NgViewsRoute",
+                "Singular/NgView/{folder}/{file}/",
+                new
+                {
+                    controller = "NgView",
+                    action = "GetView",
+                    folder = "home",
+                    file = "index"
+                }, new[]
+                {
+                    "Singular.Web.Admin.Controllers"
+                });
+
+            context.MapRoute(
                 "Singular.Web.Admin.DefaultRoute",
                 "Singular/{controller}/{action}/{id}",
                 new

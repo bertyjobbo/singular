@@ -1,4 +1,8 @@
-﻿@{
+﻿@using System.Security.AccessControl
+@using Singular.Web.Admin.Controllers
+@using Singular.Web.Admin.Defaults
+@using Singular.Web.Common
+@{
     Layout = null;
 }
 
@@ -8,10 +12,18 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>TBC title from object</title>
+    <script> window.ROOT_URL = '@Url.Content("~/")';</script>
 </head>
-    <body>
+    <body ng-app="Singular.Application">
         <header>
             <h1>Singular CMS</h1>
         </header>
+        <section ng-view="">
+            
+        </section>
+        @(Html.EmbeddedInclude<NgViewController>(SingularAdminResources.ANGULAR_MIN_JS, IncludeType.JavaScript))
+        @(Html.EmbeddedInclude<NgViewController>(SingularAdminResources.ANGULAR_ROUTE_MIN_JS, IncludeType.JavaScript))
+        @(Html.EmbeddedInclude<NgViewController>(SingularAdminResources.SINGULAR_MIN_JS, IncludeType.JavaScript))
+        
     </body>
 </html>

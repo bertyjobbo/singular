@@ -24,7 +24,7 @@ namespace Singular.Configuration
         /// </summary>
         /// <param name="name"></param>
         /// <returns></returns>
-        public SingularApplicationConfigurationRoot Named(string name)
+        public SingularApplicationConfigurationRoot IsNamed(string name)
         {
             if (!Application.IsMasterApplication) throw new Exception("Cannot name non-master application");
 
@@ -38,7 +38,7 @@ namespace Singular.Configuration
         /// </summary>
         /// <param name="action"></param>
         /// <returns></returns>
-        public SingularApplicationConfigurationRoot WithAdminSection(Action<SingularAdminSection> action)
+        public SingularApplicationConfigurationRoot HasAdminSection(Action<SingularAdminSection> action)
         {
             var section = new SingularAdminSection();
             action.Invoke(section);

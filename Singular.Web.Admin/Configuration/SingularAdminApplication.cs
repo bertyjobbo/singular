@@ -22,16 +22,16 @@ namespace Singular.Web.Admin.Configuration
 
                 .HasInstaller(new SingularAdminInstaller())
 
-                .Named(SingularAdminDefaults.APP_NAME)
+                .IsNamed(SingularAdminDefaults.APP_NAME)
 
-                .WithAdminSection(x =>
+                .HasAdminSection(x =>
                 {
                     x.Name = "Home";
                     x.Controller = "home";
                     x.Action = "index";
                 })
 
-                .WithAdminSection(x =>
+                .HasAdminSection(x =>
                 {
                     x.Name = "Content";
                     x.Controller = "content";
