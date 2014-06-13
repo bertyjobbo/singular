@@ -11,6 +11,7 @@ using System.Web.SessionState;
 using Castle.Windsor;
 using Castle.Windsor.Installer;
 using Singular.Configuration;
+using Singular.Web.Admin;
 using Singular.Web.Ui.IOC;
 
 namespace Singular.Web.Ui
@@ -27,9 +28,6 @@ namespace Singular.Web.Ui
         /// </summary>
         private static void bootstrapContainer()
         {
-            // initialise singular config
-            SingularConfigurationFactory.Current.Init();
-
             // add installer from this project
             SingularConfigurationFactory.Current.AddInstaller(new ControllersInstaller());
 
@@ -50,10 +48,27 @@ namespace Singular.Web.Ui
         /// <param name="e"></param>
         protected void Application_Start(object sender, EventArgs e)
         {
+            // initialise singular config
+            SingularConfigurationFactory.Current.Init();
+
+            // register areas
             AreaRegistration.RegisterAllAreas();
-            GlobalConfiguration.Configure(WebApiConfig.Register);
-            FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
+
+            // register routes
             RouteConfig.RegisterRoutes(RouteTable.Routes);
+
+            // loop multi props from apps
+            foreach (var app in SingularConfigurationFactory.Current.Applications)
+            {
+                if (app.WebApiConfigMethod != null) 
+                    GlobalConfiguration.Configure(app.WebApiConfigMethod);
+
+                // do the same for filters, model binders, etc
+            }
+            
+            // TODO move this into loop above
+            FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
+            
             //BundleConfig.RegisterBundles(BundleTable.Bundles);
             bootstrapContainer();
         }

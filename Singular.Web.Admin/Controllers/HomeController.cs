@@ -12,11 +12,6 @@ namespace Singular.Web.Admin.Controllers
     /// </summary>
     public class HomeController : Controller
     {
-        public HomeController(ISingularConfigurationFactory factory)
-        {
-            
-        }
-
         /// <summary>
         /// Index - returns dashboard layout
         /// </summary>

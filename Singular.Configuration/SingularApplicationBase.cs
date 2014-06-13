@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Web.Http;
 using Castle.MicroKernel.Registration;
 
 namespace Singular.Configuration
@@ -53,5 +54,10 @@ namespace Singular.Configuration
         /// Installer
         /// </summary>
         public IWindsorInstaller Installer { get; set; }
+
+        /// <summary>
+        /// Web api config method
+        /// </summary>
+        public Action<HttpConfiguration> WebApiConfigMethod { get; set; }
     }
 }

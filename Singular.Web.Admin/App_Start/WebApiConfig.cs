@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net.Http.Formatting;
-using System.Web;
+﻿using System.Net.Http.Formatting;
 using System.Web.Http;
 
-namespace Singular.Web.Ui
+namespace Singular.Web.Admin
 {
     public static class WebApiConfig
     {
@@ -16,10 +12,10 @@ namespace Singular.Web.Ui
             // Web API routes
             config.MapHttpAttributeRoutes();
 
-            config.Routes.MapHttpRoute(
-                name: "DefaultApi",
-                routeTemplate: "api/*"
-            );
+            //config.Routes.MapHttpRoute(
+            //    name: "Singular.Admin.Api",
+            //    routeTemplate: "singular/api/*"
+            //);
 
             config.Formatters.Clear();
             config.Formatters.Add(new JsonMediaTypeFormatter());

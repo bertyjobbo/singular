@@ -22,6 +22,8 @@ namespace Singular.Web.Admin.Configuration
 
                 .HasInstaller(new SingularAdminInstaller())
 
+                .HasWebApiConfigMethod(WebApiConfig.Register)
+
                 .IsNamed(SingularAdminDefaults.APP_NAME)
 
                 .HasAdminSection(x =>

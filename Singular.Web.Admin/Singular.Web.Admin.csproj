@@ -462,8 +462,10 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ApiControllers\ConfigurationController.cs" />
     <Compile Include="App_Start\RazorGeneratorMvcStart.cs" />
     <Compile Include="App_Start\SingularAdminAreaRegistration.cs" />
+    <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Configuration\SingularAdminApplication.cs" />
     <Compile Include="Controllers\NgViewController.cs" />
     <Compile Include="Controllers\HomeController.cs" />

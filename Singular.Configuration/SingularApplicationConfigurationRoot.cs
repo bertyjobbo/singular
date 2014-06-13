@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Web.Http;
 using Castle.MicroKernel.Registration;
 
 namespace Singular.Configuration
@@ -54,6 +55,12 @@ namespace Singular.Configuration
         public SingularApplicationConfigurationRoot HasInstaller(IWindsorInstaller installer)
         {
             Application.Installer = installer;
+            return this;
+        }
+
+        public SingularApplicationConfigurationRoot HasWebApiConfigMethod(Action<HttpConfiguration> register)
+        {
+            Application.WebApiConfigMethod = register;
             return this;
         }
     }
