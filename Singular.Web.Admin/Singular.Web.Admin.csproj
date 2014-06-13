@@ -116,6 +116,10 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\Site.css" />
+    <Content Include="Ng\controllers\partials\navController.js" />
+    <EmbeddedResource Include="Ng\controllers\partials\navController.min.js">
+      <DependentUpon>navController.js</DependentUpon>
+    </EmbeddedResource>
     <Content Include="Ng\singular.js" />
     <EmbeddedResource Include="Ng\singular.min.js">
       <DependentUpon>singular.js</DependentUpon>
@@ -440,6 +444,13 @@
       <Generator>RazorGenerator</Generator>
       <LastGenOutput>index.generated.cs</LastGenOutput>
     </Content>
+    <Content Include="Views\NgView\partials\_nav.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>_nav.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Ng\controllers\partials\navController.min.js.map">
+      <DependentUpon>navController.min.js</DependentUpon>
+    </Content>
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -469,6 +480,11 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>index.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\NgView\partials\_nav.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>_nav.cshtml</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

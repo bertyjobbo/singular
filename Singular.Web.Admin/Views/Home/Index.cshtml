@@ -18,12 +18,19 @@
         <header>
             <h1>Singular CMS</h1>
         </header>
+        <ng-include src="'/Singular/NgView/partials/_nav/'"></ng-include>
         <section ng-view="">
             
         </section>
+        <!-- ANGULAR -->
         @(Html.EmbeddedInclude<NgViewController>(SingularAdminResources.ANGULAR_MIN_JS, IncludeType.JavaScript))
         @(Html.EmbeddedInclude<NgViewController>(SingularAdminResources.ANGULAR_ROUTE_MIN_JS, IncludeType.JavaScript))
+
+        <!-- SINGULAR APP JS -->
         @(Html.EmbeddedInclude<NgViewController>(SingularAdminResources.SINGULAR_MIN_JS, IncludeType.JavaScript))
+        
+        <!-- CONTROLLERS -->
+        @(Html.EmbeddedInclude<NgViewController>(SingularAdminResources.NAV_CONTROLLER_MIN_JS, IncludeType.JavaScript))
         
     </body>
 </html>

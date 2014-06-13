@@ -40,3 +40,4 @@ using Singular.Web.Admin.Defaults;
 [assembly: System.Web.UI.WebResource(SingularAdminResources.ANGULAR_MIN_JS, "application/x-javascript")]
 [assembly: System.Web.UI.WebResource(SingularAdminResources.ANGULAR_ROUTE_MIN_JS, "application/x-javascript")]
 [assembly: System.Web.UI.WebResource(SingularAdminResources.SINGULAR_MIN_JS, "application/x-javascript")]
+[assembly: System.Web.UI.WebResource(SingularAdminResources.NAV_CONTROLLER_MIN_JS, "application/x-javascript")]

@@ -1,4 +1,6 @@
-﻿// NAMESPACE
+﻿'use strict';
+
+// NAMESPACE
 var Singular = {};
 
 // APP
