@@ -37,7 +37,18 @@ using Singular.Web.Admin.Defaults;
 [assembly: AssemblyFileVersion("1.0.0.0")]
 
 // RESOURCES
+
+// angular
 [assembly: System.Web.UI.WebResource(SingularAdminResources.ANGULAR_MIN_JS, "application/x-javascript")]
 [assembly: System.Web.UI.WebResource(SingularAdminResources.ANGULAR_ROUTE_MIN_JS, "application/x-javascript")]
+
+// singular
 [assembly: System.Web.UI.WebResource(SingularAdminResources.SINGULAR_MIN_JS, "application/x-javascript")]
+
+// controllers
 [assembly: System.Web.UI.WebResource(SingularAdminResources.NAV_CONTROLLER_MIN_JS, "application/x-javascript")]
+[assembly: System.Web.UI.WebResource(SingularAdminResources.HOME_CONTROLLER_MIN_JS, "application/x-javascript")]
+[assembly: System.Web.UI.WebResource(SingularAdminResources.SYSTEM_CONTROLLER_MIN_JS, "application/x-javascript")]
+
+// directives
+[assembly: System.Web.UI.WebResource(SingularAdminResources.SG_VIEW_DIRECTIVE_MIN_JS, "application/x-javascript")]

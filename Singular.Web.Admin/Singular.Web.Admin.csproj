@@ -116,9 +116,21 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\Site.css" />
+    <Content Include="Ng\controllers\homeController.js" />
+    <EmbeddedResource Include="Ng\controllers\homeController.min.js">
+      <DependentUpon>homeController.js</DependentUpon>
+    </EmbeddedResource>
     <Content Include="Ng\controllers\partials\navController.js" />
     <EmbeddedResource Include="Ng\controllers\partials\navController.min.js">
       <DependentUpon>navController.js</DependentUpon>
+    </EmbeddedResource>
+    <Content Include="Ng\controllers\systemController.js" />
+    <EmbeddedResource Include="Ng\controllers\systemController.min.js">
+      <DependentUpon>systemController.js</DependentUpon>
+    </EmbeddedResource>
+    <Content Include="Ng\directives\sgView.js" />
+    <EmbeddedResource Include="Ng\directives\sgView.min.js">
+      <DependentUpon>sgView.js</DependentUpon>
     </EmbeddedResource>
     <Content Include="Ng\singular.js" />
     <EmbeddedResource Include="Ng\singular.min.js">
@@ -451,6 +463,23 @@
     <Content Include="Ng\controllers\partials\navController.min.js.map">
       <DependentUpon>navController.min.js</DependentUpon>
     </Content>
+    <Content Include="Ng\directives\sgView.min.js.map">
+      <DependentUpon>sgView.min.js</DependentUpon>
+    </Content>
+    <Content Include="Ng\controllers\homeController.min.js.map">
+      <DependentUpon>homeController.min.js</DependentUpon>
+    </Content>
+    <Content Include="Ng\controllers\systemController.min.js.map">
+      <DependentUpon>systemController.min.js</DependentUpon>
+    </Content>
+    <Content Include="Views\NgView\system\error.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>error.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\NgView\system\pagenotfound.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>pagenotfound.generated.cs</LastGenOutput>
+    </Content>
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -487,6 +516,16 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>_nav.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\NgView\system\error.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>error.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\NgView\system\pagenotfound.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>pagenotfound.cshtml</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

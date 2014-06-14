@@ -9,7 +9,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Singular.Web.Admin.Views.NgView.home
+namespace Singular.Web.Admin.Views.NgView.system
 {
     using System;
     using System.Collections.Generic;
@@ -28,15 +28,15 @@ namespace Singular.Web.Admin.Views.NgView.home
     using System.Web.WebPages;
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("RazorGenerator", "2.0.0.0")]
-    [System.Web.WebPages.PageVirtualPathAttribute("~/Views/NgView/home/index.cshtml")]
-    public partial class index : System.Web.Mvc.WebViewPage<dynamic>
+    [System.Web.WebPages.PageVirtualPathAttribute("~/Views/NgView/system/pagenotfound.cshtml")]
+    public partial class pagenotfound : System.Web.Mvc.WebViewPage<dynamic>
     {
-        public index()
+        public pagenotfound()
         {
         }
         public override void Execute()
         {
-WriteLiteral("<h2>HOME</h2>\r\n");
+WriteLiteral("<p>Sorry, that page probably (99%) doesn\'t exist.</p>\r\n");
 
 
         }

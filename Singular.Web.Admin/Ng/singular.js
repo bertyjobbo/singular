@@ -14,14 +14,10 @@ Singular.Application = angular.module("Singular.Application", ["ngRoute"]);
         return (window.ROOT_URL + restOfUrl).replace("//", "/");
     }
 
-    // route provider
+    // route provider config
     $a.config(["$routeProvider", function ($routeProvider) {
 
-        // home
-        $routeProvider.when("/", { templateUrl: $a.getRootedUrl("Singular/NgView/home/index/") });
-
-        // else
-        $routeProvider.otherwise({ redirectTo: "/system/pagenotfound/" });
+        $a.configureRootForSgView($routeProvider);
 
     }]);
 
@@ -30,16 +26,21 @@ Singular.Application = angular.module("Singular.Application", ["ngRoute"]);
 
         // set internal url method
         $rootScope.getSingularUrl = function (controller, action, id) {
-
-            // check
-            if (controller === undefined) controller = "home";
-            if (action === undefined) action = "index";
-
+            
             // get root
             var root = $a.getRootedUrl("");
 
+            // check
+            if (controller !== undefined && controller !== null && controller.toLowerCase() === "home" && action !== undefined && action !== null && action.toLowerCase() === "index")
+                return root + "singular/#/";
+
             //
-            return root + "singular/#/" + controller + "/" + action + "/" + (id === undefined ? "" : id + "/");
+            return root + "singular/#/" +
+                (controller === undefined ? "" : controller + "/")
+                +
+                (action === undefined ? "" : action + "/")
+                +
+                (id === undefined ? "" : id + "/");
         }
 
         // get external
@@ -47,6 +48,26 @@ Singular.Application = angular.module("Singular.Application", ["ngRoute"]);
 
     }]);
 
+
+    // ERROR HANDLING
+    $a.factory("$exceptionHandler", ["$injector", function ($injector) {
+
+        // Override error handling
+        return function (exception, cause) {
+
+            // log
+            console.log("Exception", exception);
+            console.log("Cause", cause);
+
+            //// alert
+            //alert("Error:\n" + (exception.message === undefined ? exception : exception.message) + "\n\nCause:\n" + cause);
+
+            // redirect
+            var lction = $injector.get("$location");
+            if (lction) lction.path("/system/error/");
+        };
+
+    }]);
 
 
 })(Singular.Application)

@@ -43,7 +43,9 @@ namespace Singular.Configuration
         {
             _assemblies = new List<Assembly>();
 
-            var pathToBin = System.IO.Path.Combine(System.AppDomain.CurrentDomain.BaseDirectory, "bin");
+            var pathToBin = System.AppDomain.CurrentDomain.BaseDirectory;
+
+            if (!pathToBin.Contains("bin")) pathToBin = Path.Combine(pathToBin, "bin");
 
             foreach (var dllPath in Directory.GetFiles(pathToBin, "*.dll"))
             {
