@@ -20,9 +20,11 @@ namespace Singular.Web.Admin.Configuration
 
                 .IsMasterApplication()
 
-                .HasInstaller(new SingularAdminInstaller())
+                .HasControllerInstaller(new SingularAdminInstaller())
 
-                .HasWebApiConfigMethod(WebApiConfig.Register)
+                .HasWebApiControllerInstaller(new SingularAdminApiInstaller())
+
+                //.HasWebApiConfigMethod(WebApiConfig.Register)
 
                 .IsNamed(SingularAdminDefaults.APP_NAME)
 

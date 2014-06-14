@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Reflection;
 using Castle.MicroKernel.Registration;
@@ -33,12 +34,28 @@ namespace Singular.Configuration
         /// <summary>
         /// Installers
         /// </summary>
-        IList<IWindsorInstaller> Installers { get; set; }
+        IList<IWindsorInstaller> ControllerInstallers { get; set; }
+
+        /// <summary>
+        /// Installers
+        /// </summary>
+        IList<IWindsorInstaller> WebApiControllerInstallers { get; set; }
+
+        /// <summary>
+        /// App start methods
+        /// </summary>
+        IList<Action> AppStartMethods { get; set; }
 
         /// <summary>
         /// Add installer
         /// </summary>
         /// <param name="installer"></param>
-        void AddInstaller(IWindsorInstaller installer);
+        void AddControllerInstaller(IWindsorInstaller installer);
+
+        /// <summary>
+        /// Add web api installer
+        /// </summary>
+        /// <param name="installer"></param>
+        void AddWebApiControllerInstaller(IWindsorInstaller installer);
     }
 }

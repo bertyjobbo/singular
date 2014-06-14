@@ -9,12 +9,12 @@ namespace Singular.Web.Ui
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
-            routes.MapRoute(
-                name: "Default",
-                url: "{*catchall}",
-                defaults: new { controller = "System", action = "Error", id = UrlParameter.Optional },
-                namespaces: new[] { "Singular.Web.Ui.Controllers" }
-            );
+            //routes.MapRoute(
+            //    name: "Default",
+            //    url: "{*catchall}",
+            //    defaults: new { controller = "System", action = "Error", id = UrlParameter.Optional },
+            //    namespaces: new[] { "Singular.Web.Ui.Controllers" }
+            //);
         }
     }
 }

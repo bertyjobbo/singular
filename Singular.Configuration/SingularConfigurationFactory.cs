@@ -86,13 +86,28 @@ namespace Singular.Configuration
                 }
             }
 
-            // finally
+            // Set applications on this object
             Applications = ApplicationsWithConfiguration.Select(x => x.Application).ToList();
+
+            // Set admin sections on this object
             AdminSections = Applications.SelectMany(x => x.AdminSections).ToList();
+
+            // set controller installers
             Applications.ForEach(x =>
             {
-                if(x.Installer != null) AddInstaller(x.Installer);
+                if (x.ControllerInstaller != null) AddControllerInstaller(x.ControllerInstaller);
             });
+
+            // set web api controller installers
+            Applications.ForEach(x =>
+            {
+                if (x.WebApiControllerInstaller != null) AddWebApiControllerInstaller(x.WebApiControllerInstaller);
+            });
+
+            // set app start methods
+            AppStartMethods = Applications.Where(x=>x.AppStartMethod != null).Select(x => x.AppStartMethod).ToList();
+
+            
         }
 
         /// <summary>
@@ -144,18 +159,38 @@ namespace Singular.Configuration
         public SingularApplicationBase MasterApplication { get; private set; }
 
         /// <summary>
+        /// Controller installers
+        /// </summary>
+        public IList<IWindsorInstaller> ControllerInstallers { get; set; }
+
+        /// <summary>
         /// Installers
         /// </summary>
-        public IList<IWindsorInstaller> Installers { get; set; }
+        public IList<IWindsorInstaller> WebApiControllerInstallers { get; set; }
+
+        /// <summary>
+        /// App start methods
+        /// </summary>
+        public IList<Action> AppStartMethods { get; set; }
 
         /// <summary>
         /// Add installer
         /// </summary>
         /// <param name="installer"></param>
-        public void AddInstaller(IWindsorInstaller installer)
+        public void AddControllerInstaller(IWindsorInstaller installer)
         {
-            if (Installers == null) Installers = new List<IWindsorInstaller>();
-            Installers.Add(installer);
+            if (ControllerInstallers == null) ControllerInstallers = new List<IWindsorInstaller>();
+            ControllerInstallers.Add(installer);
+        }
+
+        /// <summary>
+        /// Add web api installers
+        /// </summary>
+        /// <param name="installer"></param>
+        public void AddWebApiControllerInstaller(IWindsorInstaller installer)
+        {
+            if (WebApiControllerInstallers == null) WebApiControllerInstallers = new List<IWindsorInstaller>();
+            WebApiControllerInstallers.Add(installer);
         }
 
         /// <summary>

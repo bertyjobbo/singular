@@ -1,7 +1,7 @@
 ﻿using System.Net.Http.Formatting;
 using System.Web.Http;
 
-namespace Singular.Web.Admin
+namespace Singular.Web.Ui
 {
     public static class WebApiConfig
     {

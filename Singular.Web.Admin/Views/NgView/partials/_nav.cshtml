@@ -1,5 +1,5 @@
 ﻿<nav ng-controller="navController">
     <ul ng-repeat="item in navItems">
-        <li>{{ item.Title }}</li>
+        <li><a ng-href="{{ getSingularUrl(item.Controller, item.Action) }}" title="{{ item.Name }}">{{ item.Name }}</a></li>
     </ul>
 </nav>

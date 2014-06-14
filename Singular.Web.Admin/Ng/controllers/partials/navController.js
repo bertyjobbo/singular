@@ -1,17 +1,16 @@
 ﻿'use strict';
 
-(function($a) {
-    
+(function ($a) {
+
     // nav controller
-    $a.controller("navController", ["$scope", function($scope) {
-
+    $a.controller("navController", ["$scope", "$http", function ($scope, $http) {
             
-            $scope.navItems = [
-                { Title: "Test1" },
-                { Title: "Test2" },
-                { Title: "Test3" }
-            ];
-
+        // get data
+        $http
+            .get($a.getRootedUrl("singularapi/config/sections/"))
+            .success(function (data) {
+                $scope.navItems = data;
+            });
         }
     ]);
 

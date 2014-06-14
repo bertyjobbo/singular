@@ -8,6 +8,7 @@ using System.Web.Mvc;
 using System.Web.Routing;
 using System.Web.Security;
 using System.Web.SessionState;
+using Castle.Core.Internal;
 using Castle.Windsor;
 using Castle.Windsor.Installer;
 using Singular.Configuration;
@@ -21,24 +22,44 @@ namespace Singular.Web.Ui
         /// <summary>
         /// Windsor container
         /// </summary>
-        private static IWindsorContainer _container;
+        private IWindsorContainer _container;
+
+        /// <summary>
+        /// Windsor container
+        /// </summary>
+        private IWindsorContainer _webApiContainer;
 
         /// <summary>
         /// Bootstrap container
         /// </summary>
-        private static void bootstrapContainer()
+        private void bootstrapControllersContainer()
         {
             // add installer from this project
-            SingularConfigurationFactory.Current.AddInstaller(new ControllersInstaller());
+            SingularConfigurationFactory.Current.AddControllerInstaller(new ControllersInstaller());
 
             // create container, adding all installers
-            _container = new WindsorContainer().Install(SingularConfigurationFactory.Current.Installers.ToArray());
+            _container = new WindsorContainer().Install(SingularConfigurationFactory.Current.ControllerInstallers.ToArray());
 
             // create controller factory
             var controllerFactory = new WindsorControllerFactory(_container.Kernel);
 
             // set controller factory
             ControllerBuilder.Current.SetControllerFactory(controllerFactory);
+        }
+
+        /// <summary>
+        /// Bootstrap container
+        /// </summary>
+        private void bootstrapWebApiContainer()
+        {
+            // add installer from this project
+            SingularConfigurationFactory.Current.AddWebApiControllerInstaller(new WebApiControllersInstaller());
+
+            // create container, adding all installers
+            _webApiContainer = new WindsorContainer().Install(SingularConfigurationFactory.Current.WebApiControllerInstallers.ToArray());
+
+            // set 
+            GlobalConfiguration.Configuration.DependencyResolver = new WindsorWebApiDependencyResolver(_webApiContainer);
         }
 
         /// <summary>
@@ -51,26 +72,30 @@ namespace Singular.Web.Ui
             // initialise singular config
             SingularConfigurationFactory.Current.Init();
 
+            // containers
+            bootstrapControllersContainer();
+            bootstrapWebApiContainer();
+
             // register areas
             AreaRegistration.RegisterAllAreas();
 
             // register routes
             RouteConfig.RegisterRoutes(RouteTable.Routes);
 
-            // loop multi props from apps
-            foreach (var app in SingularConfigurationFactory.Current.Applications)
-            {
-                if (app.WebApiConfigMethod != null) 
-                    GlobalConfiguration.Configure(app.WebApiConfigMethod);
+            // web api
+            //WebApiConfig.Register(GlobalConfiguration.Configuration); //v1
+            GlobalConfiguration.Configure(WebApiConfig.Register); // v2
 
-                // do the same for filters, model binders, etc
-            }
-            
-            // TODO move this into loop above
+
+            // fileters
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
-            
-            //BundleConfig.RegisterBundles(BundleTable.Bundles);
-            bootstrapContainer();
+
+            // call other methods
+            SingularConfigurationFactory
+                .Current
+                .AppStartMethods
+                .ForEach(m => m.Invoke());
+
         }
 
         protected void Session_Start(object sender, EventArgs e)

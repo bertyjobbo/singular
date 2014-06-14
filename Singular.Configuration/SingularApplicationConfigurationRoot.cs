@@ -52,15 +52,31 @@ namespace Singular.Configuration
         /// </summary>
         /// <param name="installer"></param>
         /// <returns></returns>
-        public SingularApplicationConfigurationRoot HasInstaller(IWindsorInstaller installer)
+        public SingularApplicationConfigurationRoot HasControllerInstaller(IWindsorInstaller installer)
         {
-            Application.Installer = installer;
+            Application.ControllerInstaller = installer;
             return this;
         }
 
-        public SingularApplicationConfigurationRoot HasWebApiConfigMethod(Action<HttpConfiguration> register)
+        /// <summary>
+        /// Set installer
+        /// </summary>
+        /// <param name="installer"></param>
+        /// <returns></returns>
+        public SingularApplicationConfigurationRoot HasWebApiControllerInstaller(IWindsorInstaller installer)
         {
-            Application.WebApiConfigMethod = register;
+            Application.WebApiControllerInstaller = installer;
+            return this;
+        }
+
+        /// <summary>
+        /// Has app start method
+        /// </summary>
+        /// <param name="method"></param>
+        /// <returns></returns>
+        public SingularApplicationConfigurationRoot HasAppStartMethod(Action method)
+        {
+            Application.AppStartMethod = method;
             return this;
         }
     }

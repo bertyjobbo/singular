@@ -20,10 +20,9 @@ namespace Singular.Web.Admin.IOC
                 Classes
                 .FromThisAssembly()
                 .BasedOn<IController>()
-                .LifestyleTransient(),
+                .LifestyleTransient()
                 
-                // dummy
-                Component.For<ISingularConfigurationFactory>().UsingFactoryMethod(x=> SingularConfigurationFactory.Current)
+                
             );
 
             

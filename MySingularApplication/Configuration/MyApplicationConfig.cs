@@ -20,7 +20,7 @@ namespace MySingularApplication.Configuration
         public override void Configure(SingularApplicationConfigurationRoot config)
         {
             config
-                .HasInstaller(new MySingularInstaller());
+                .HasControllerInstaller(new MySingularInstaller());
         }
 
 

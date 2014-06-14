@@ -53,11 +53,16 @@ namespace Singular.Configuration
         /// <summary>
         /// Installer
         /// </summary>
-        public IWindsorInstaller Installer { get; set; }
+        public IWindsorInstaller ControllerInstaller { get; set; }
 
         /// <summary>
-        /// Web api config method
+        /// Installer
         /// </summary>
-        public Action<HttpConfiguration> WebApiConfigMethod { get; set; }
+        public IWindsorInstaller WebApiControllerInstaller { get; set; }
+
+        /// <summary>
+        /// App start method
+        /// </summary>
+        public Action AppStartMethod { get; set; }
     }
 }

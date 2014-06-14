@@ -465,12 +465,12 @@
     <Compile Include="ApiControllers\ConfigurationController.cs" />
     <Compile Include="App_Start\RazorGeneratorMvcStart.cs" />
     <Compile Include="App_Start\SingularAdminAreaRegistration.cs" />
-    <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Configuration\SingularAdminApplication.cs" />
     <Compile Include="Controllers\NgViewController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Defaults\SingularAdminDefaults.cs" />
     <Compile Include="Defaults\SingularAdminResources.cs" />
+    <Compile Include="IOC\SingularAdminApiInstaller.cs" />
     <Compile Include="IOC\SingularAdminInstaller.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Views\Home\Index.generated.cs">

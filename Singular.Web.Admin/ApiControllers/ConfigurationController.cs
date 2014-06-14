@@ -30,7 +30,8 @@ namespace Singular.Web.Admin.ApiControllers
         /// Sections
         /// </summary>
         /// <returns></returns>
-        [Route("singular/api/configuration/sections")]
+        [Route("singularapi/config/sections")]
+        [AcceptVerbs("GET")]
         public IList<SingularAdminSection> Sections()
         {
             return _factory.Applications.SelectMany(x => x.AdminSections).ToList();
