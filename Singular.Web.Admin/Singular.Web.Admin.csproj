@@ -132,6 +132,10 @@
     <EmbeddedResource Include="Ng\directives\sgView.min.js">
       <DependentUpon>sgView.js</DependentUpon>
     </EmbeddedResource>
+    <Content Include="Ng\services\configDataService.js" />
+    <EmbeddedResource Include="Ng\services\configDataService.min.js">
+      <DependentUpon>configDataService.js</DependentUpon>
+    </EmbeddedResource>
     <Content Include="Ng\singular.js" />
     <EmbeddedResource Include="Ng\singular.min.js">
       <DependentUpon>singular.js</DependentUpon>
@@ -479,6 +483,9 @@
     <Content Include="Views\NgView\system\pagenotfound.cshtml">
       <Generator>RazorGenerator</Generator>
       <LastGenOutput>pagenotfound.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Ng\services\configDataService.min.js.map">
+      <DependentUpon>configDataService.min.js</DependentUpon>
     </Content>
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

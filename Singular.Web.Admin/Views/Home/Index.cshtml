@@ -35,6 +35,9 @@
         
         <!-- DIRECTIVES -->
         @(Html.EmbeddedInclude<NgViewController>(SingularAdminResources.SG_VIEW_DIRECTIVE_MIN_JS, IncludeType.JavaScript))
+        
+        <!-- SERVICES -->
+        @(Html.EmbeddedInclude<NgViewController>(SingularAdminResources.CONFIG_SERVICE_MIN_JS, IncludeType.JavaScript))
 
     </body>
 </html>

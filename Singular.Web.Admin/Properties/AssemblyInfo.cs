@@ -52,3 +52,7 @@ using Singular.Web.Admin.Defaults;
 
 // directives
 [assembly: System.Web.UI.WebResource(SingularAdminResources.SG_VIEW_DIRECTIVE_MIN_JS, "application/x-javascript")]
+
+// services
+[assembly: System.Web.UI.WebResource(SingularAdminResources.CONFIG_DATA_SERVICE_MIN_JS, "application/x-javascript")]
+

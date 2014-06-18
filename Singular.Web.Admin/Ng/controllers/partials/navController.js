@@ -2,16 +2,16 @@
 
 (function ($a) {
 
-    // nav controller
-    $a.controller("navController", ["$scope", "$http", function ($scope, $http) {
-            
-        // get data
-        $http
-            .get($a.getRootedUrl("singularapi/config/sections/"))
-            .success(function (data) {
-                $scope.navItems = data;
-            });
-        }
-    ]);
+    $a.controller("navController", ["$scope", "configDataService", function ($scope, configDataService) {
 
-})(Singular.Application)
+        // get nav items
+        configDataService
+            .getSectionsPromise()
+            .then(function (promise) {
+                $scope.navItems = promise.data;
+            });
+
+    }]);
+
+})(Singular.Application);
+
