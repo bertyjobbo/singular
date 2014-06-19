@@ -62,5 +62,10 @@ namespace Singular.Configuration
         /// Node types
         /// </summary>
         IList<NodeTypeDefinition> NodeTypes { get; set; }
+
+        /// <summary> 
+        /// Sections
+        /// </summary>
+        IList<SingularAdminSection> Sections { get; set; }
     }
 }

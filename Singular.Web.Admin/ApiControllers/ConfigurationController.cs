@@ -26,16 +26,16 @@ namespace Singular.Web.Admin.ApiControllers
         }
 
          
-        /// <summary>
-        /// Sections
-        /// </summary>
-        /// <returns></returns>
-        [Route("singularapi/config/sections")]
-        [AcceptVerbs("GET")]
-        public IList<SingularAdminSection> Sections()
-        {
-            return _factory.Applications.SelectMany(x => x.AdminSections).ToList();
-        }
+        ///// <summary>
+        ///// Sections
+        ///// </summary>
+        ///// <returns></returns>
+        //[Route("singularapi/config/sections")]
+        //[AcceptVerbs("GET")]
+        //public IList<SingularAdminSection> Sections()
+        //{
+        //    return _factory.Applications.SelectMany(x => x.AdminSections).ToList();
+        //}
 
         /// <summary>
         /// Sections

@@ -4,11 +4,10 @@
 
     $a.controller("navController", ["$scope", "configDataService", function ($scope, configDataService) {
 
-        // get nav items
         configDataService
-            .getSectionsPromise()
-            .then(function (promise) {
-                $scope.navItems = promise.data;
+            .getSingularConfigurationFactoryDataPromise()
+            .then(function (data) {
+                $scope.navItems = data.Sections;
             });
 
     }]);

@@ -5,10 +5,13 @@
 
     $a.controller("configurationController", ["$scope","configDataService", function ($scope, configDataService) {
 
-        configDataService.getFactoryPromise().then(function (promise) {
-            $scope.factoryData = promise.data;
-            console.log($scope.factoryData);
-        });
+        configDataService
+            .getSingularConfigurationFactoryDataPromise()
+            .then(function (data) {
+                $scope.factoryData = data;
+                console.log("scope.factoryData = ", $scope.factoryData);
+            });
+        
 
     }]);
 

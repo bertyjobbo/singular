@@ -21,6 +21,9 @@ Singular.Application = angular.module("Singular.Application", ["ngRoute"]);
 
     }]);
 
+    // factory data
+    $a.constant("singularConfigurationFactoryData", undefined);
+
     // run
     $a.run(["$rootScope", function ($rootScope) {
 

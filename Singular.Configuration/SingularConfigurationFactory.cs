@@ -93,7 +93,7 @@ namespace Singular.Configuration
             Applications = ApplicationsWithConfiguration.Select(x => x.Application).ToList();
 
             // Set admin sections on this object
-            AdminSections = Applications.SelectMany(x => x.AdminSections).ToList();
+            Sections = Applications.SelectMany(x => x.AdminSections).ToList();
 
             // set controller installers
             Applications.ForEach(x =>
@@ -105,7 +105,7 @@ namespace Singular.Configuration
             Applications.ForEach(x =>
             {
                 if (x.WebApiControllerInstaller != null) AddWebApiControllerInstaller(x.WebApiControllerInstaller);
-            });
+            });  
 
             // set app start methods
             AppStartMethods = Applications.Where(x=>x.AppStartMethod != null).Select(x => x.AppStartMethod).ToList();
@@ -220,6 +220,6 @@ namespace Singular.Configuration
         /// <summary>
         /// Admin sections
         /// </summary>
-        public IList<SingularAdminSection> AdminSections { get; set; }
+        public IList<SingularAdminSection> Sections { get; set; }
     }
 }
