@@ -5,6 +5,7 @@ using System.Linq;
 using System.Reflection;
 using Castle.Core.Internal;
 using Castle.MicroKernel.Registration;
+using Singular.Common;
 
 namespace Singular.Configuration
 {
@@ -109,7 +110,23 @@ namespace Singular.Configuration
             // set app start methods
             AppStartMethods = Applications.Where(x=>x.AppStartMethod != null).Select(x => x.AppStartMethod).ToList();
 
-            
+            // node types
+            NodeTypes = Applications.SelectMany(x => x.NodeTypes).OrderBy(x => x.Name).ToList();
+            foreach (var def in NodeTypes)
+            {
+                if (!string.IsNullOrEmpty(def.AllowedChildTypeMagicNames))
+                {
+                    var allowedTypes = new List<NodeTypeDefinition>();
+                    foreach (var magicName in def.AllowedChildTypeMagicNames.Split(','))
+                    {
+                        // find
+                        var found = NodeTypes.FirstOrDefault(x => x.MagicName == magicName);
+                        if (found != null) allowedTypes.Add(found.SlowParameterlessConstructorClone());
+                        def.AllowedChildTypes = allowedTypes.OrderBy(x=>x.Name).ToList();
+                    }
+                }
+            }
+
         }
 
         /// <summary>
@@ -194,6 +211,11 @@ namespace Singular.Configuration
             if (WebApiControllerInstallers == null) WebApiControllerInstallers = new List<IWindsorInstaller>();
             WebApiControllerInstallers.Add(installer);
         }
+
+        /// <summary>
+        /// Node types
+        /// </summary>
+        public IList<NodeTypeDefinition> NodeTypes { get; set; }
 
         /// <summary>
         /// Admin sections

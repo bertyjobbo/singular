@@ -17,6 +17,7 @@ namespace Singular.Configuration
         protected SingularApplicationBase()
         {
             AdminSections = new List<SingularAdminSection>();
+            NodeTypes = new List<NodeTypeDefinition>();
         }
 
         /// <summary>
@@ -64,5 +65,10 @@ namespace Singular.Configuration
         /// App start method
         /// </summary>
         public Action AppStartMethod { get; set; }
+
+        /// <summary>
+        /// Node types
+        /// </summary>
+        public IList<NodeTypeDefinition> NodeTypes { get; set; }
     }
 }

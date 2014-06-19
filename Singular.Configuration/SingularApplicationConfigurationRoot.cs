@@ -79,5 +79,18 @@ namespace Singular.Configuration
             Application.AppStartMethod = method;
             return this;
         }
+
+        /// <summary>
+        /// Node type
+        /// </summary>
+        /// <param name="action"></param>
+        /// <returns></returns>
+        public SingularApplicationConfigurationRoot HasNodeType(Action<NodeTypeDefinition> action)
+        {
+            var nodeType = new NodeTypeDefinition();
+            action.Invoke(nodeType);
+            Application.NodeTypes.Add(nodeType);
+            return this;
+        }
     }
 }

@@ -95,6 +95,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ApplicationConfigurationModel.cs" />
+    <Compile Include="NodeTypeDefinition.cs" />
     <Compile Include="SingularAdminSection.cs" />
     <Compile Include="SingularApplicationConfigurationRoot.cs" />
     <Compile Include="ISingularConfigurationFactory.cs" />
@@ -104,6 +105,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Singular.Common\Singular.Common.csproj">
+      <Project>{2D6996A8-18CF-4A30-BF30-08C0A9A74963}</Project>
+      <Name>Singular.Common</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />

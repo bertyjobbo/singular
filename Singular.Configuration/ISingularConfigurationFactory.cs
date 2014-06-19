@@ -57,5 +57,10 @@ namespace Singular.Configuration
         /// </summary>
         /// <param name="installer"></param>
         void AddWebApiControllerInstaller(IWindsorInstaller installer);
+
+        /// <summary>
+        /// Node types
+        /// </summary>
+        IList<NodeTypeDefinition> NodeTypes { get; set; }
     }
 }

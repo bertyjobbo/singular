@@ -156,11 +156,21 @@ WriteLiteral("\r\n        ");
             
             #line default
             #line hidden
+WriteLiteral("\r\n        ");
+
+
+            
+            #line 35 "..\..\Views\Home\Index.cshtml"
+    Write(Html.EmbeddedInclude<NgViewController>(SingularAdminResources.CONFIGURATION_CONTROLLER_MIN_JS, IncludeType.JavaScript));
+
+            
+            #line default
+            #line hidden
 WriteLiteral("\r\n        \r\n        <!-- DIRECTIVES -->\r\n        ");
 
 
             
-            #line 37 "..\..\Views\Home\Index.cshtml"
+            #line 38 "..\..\Views\Home\Index.cshtml"
     Write(Html.EmbeddedInclude<NgViewController>(SingularAdminResources.SG_VIEW_DIRECTIVE_MIN_JS, IncludeType.JavaScript));
 
             
@@ -170,7 +180,7 @@ WriteLiteral("\r\n        \r\n        <!-- SERVICES -->\r\n        ");
 
 
             
-            #line 40 "..\..\Views\Home\Index.cshtml"
+            #line 41 "..\..\Views\Home\Index.cshtml"
     Write(Html.EmbeddedInclude<NgViewController>(SingularAdminResources.CONFIG_DATA_SERVICE_MIN_JS, IncludeType.JavaScript));
 
             

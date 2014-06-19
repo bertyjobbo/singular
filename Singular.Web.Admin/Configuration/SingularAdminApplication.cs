@@ -40,7 +40,16 @@ namespace Singular.Web.Admin.Configuration
                     x.Name = "Content";
                     x.Controller = "content";
                     x.Action = "index";
-                });
+                })
+
+                .HasAdminSection(x =>
+                {
+                    x.Name = "Configuration";
+                    x.Controller = "configuration";
+                    x.Action = "index";
+                })
+
+                ;
         }
 
         /// <summary>

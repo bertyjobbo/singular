@@ -49,6 +49,7 @@ using Singular.Web.Admin.Defaults;
 [assembly: System.Web.UI.WebResource(SingularAdminResources.NAV_CONTROLLER_MIN_JS, "application/x-javascript")]
 [assembly: System.Web.UI.WebResource(SingularAdminResources.HOME_CONTROLLER_MIN_JS, "application/x-javascript")]
 [assembly: System.Web.UI.WebResource(SingularAdminResources.SYSTEM_CONTROLLER_MIN_JS, "application/x-javascript")]
+[assembly: System.Web.UI.WebResource(SingularAdminResources.CONFIGURATION_CONTROLLER_MIN_JS, "application/x-javascript")]
 
 // directives
 [assembly: System.Web.UI.WebResource(SingularAdminResources.SG_VIEW_DIRECTIVE_MIN_JS, "application/x-javascript")]

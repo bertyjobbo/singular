@@ -16,6 +16,7 @@ namespace Singular.Web.Admin.Defaults
         public const string NAV_CONTROLLER_MIN_JS = "Singular.Web.Admin.Ng.controllers.partials.navController.min.js";
         public const string HOME_CONTROLLER_MIN_JS = "Singular.Web.Admin.Ng.controllers.homeController.min.js";
         public const string SYSTEM_CONTROLLER_MIN_JS = "Singular.Web.Admin.Ng.controllers.systemController.min.js";
+        public const string CONFIGURATION_CONTROLLER_MIN_JS = "Singular.Web.Admin.Ng.controllers.configurationController.min.js";
 
         // directive
         public const string SG_VIEW_DIRECTIVE_MIN_JS = "Singular.Web.Admin.Ng.directives.sgView.min.js";

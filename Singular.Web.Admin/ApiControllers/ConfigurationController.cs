@@ -36,5 +36,16 @@ namespace Singular.Web.Admin.ApiControllers
         {
             return _factory.Applications.SelectMany(x => x.AdminSections).ToList();
         }
+
+        /// <summary>
+        /// Sections
+        /// </summary>
+        /// <returns></returns>
+        [Route("singularapi/config/factory")]
+        [AcceptVerbs("GET")]
+        public ISingularConfigurationFactory Factory()
+        {
+            return _factory;
+        }
     }
 }

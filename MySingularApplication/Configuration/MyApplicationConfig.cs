@@ -20,7 +20,29 @@ namespace MySingularApplication.Configuration
         public override void Configure(SingularApplicationConfigurationRoot config)
         {
             config
-                .HasControllerInstaller(new MySingularInstaller());
+                .HasControllerInstaller(new MySingularInstaller())
+
+                .HasNodeType(x =>
+                {
+                    x.AllowedChildTypeMagicNames = "CONTENT_PAGE";
+                    x.CanBeJson = true;
+                    x.CanBePage = true;
+                    x.CanBeRoot = true;
+                    x.MagicName = "HOME_PAGE";
+                    x.Name = "Home page";
+                })
+
+                .HasNodeType(x =>
+                {
+                    x.AllowedChildTypeMagicNames = "CONTENT_PAGE";
+                    x.CanBeJson = true;
+                    x.CanBePage = true;
+                    x.CanBeRoot = false;
+                    x.MagicName = "CONTENT_PAGE";
+                    x.Name = "Content page";
+                })
+                
+                ;
         }
 
 

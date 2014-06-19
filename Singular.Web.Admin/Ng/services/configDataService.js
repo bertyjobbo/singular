@@ -18,8 +18,10 @@
 
             getSectionsPromise: function () {
 
-                // REFRACTOR TO SINGLE SERVICE FOR ALL CALLS
                 return $http.get($a.getRootedUrl("singularapi/config/sections/"));
+            },
+            getFactoryPromise: function () {
+                return $http.get($a.getRootedUrl("singularapi/config/factory/"));
             }
         };
 
