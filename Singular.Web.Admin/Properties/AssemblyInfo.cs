@@ -38,6 +38,9 @@ using Singular.Web.Admin.Defaults;
 
 // RESOURCES
 
+// css
+[assembly: System.Web.UI.WebResource(SingularAdminResources.SG_MIN_CSS, "text/css")]
+
 // angular
 [assembly: System.Web.UI.WebResource(SingularAdminResources.ANGULAR_MIN_JS, "application/x-javascript")]
 [assembly: System.Web.UI.WebResource(SingularAdminResources.ANGULAR_ROUTE_MIN_JS, "application/x-javascript")]

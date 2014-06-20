@@ -22,6 +22,8 @@ namespace MySingularApplication.Configuration
             config
                 .HasControllerInstaller(new MySingularInstaller())
 
+                .IsNamed("My SG App!")
+
                 .HasNodeType(x =>
                 {
                     x.AllowedChildTypeMagicNames = "CONTENT_PAGE";

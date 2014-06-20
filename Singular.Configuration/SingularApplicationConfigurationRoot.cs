@@ -27,10 +27,7 @@ namespace Singular.Configuration
         /// <returns></returns>
         public SingularApplicationConfigurationRoot IsNamed(string name)
         {
-            if (!Application.IsMasterApplication) throw new Exception("Cannot name non-master application");
-
             Application.Name = name;
-
             return this;
         }
 

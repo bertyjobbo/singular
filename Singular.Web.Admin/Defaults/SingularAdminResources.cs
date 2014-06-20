@@ -7,6 +7,9 @@ namespace Singular.Web.Admin.Defaults
 {
     public static class SingularAdminResources
     {
+        // css
+        public const string SG_MIN_CSS = "Singular.Web.Admin.Content.Css.sg.min.css";
+
         // main
         public const string ANGULAR_MIN_JS = "Singular.Web.Admin.Scripts.angular.min.js";
         public const string ANGULAR_ROUTE_MIN_JS = "Singular.Web.Admin.Scripts.angular-route.min.js";

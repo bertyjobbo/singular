@@ -36,7 +36,29 @@ namespace Singular.Web.Admin.Views.NgView.configuration
         }
         public override void Execute()
         {
-WriteLiteral("<h2>Configuration summary</h2>");
+WriteLiteral(@"<h2>Configuration summary</h2>
+<p>Below is a summary of the data held in SingularConfigurationFactory.Current</p>
+<h3>Applications (count = {{ factoryData.Applications.length }})</h3>
+<h4 ng-repeat-start=""app in factoryData.Applications"">{{ app.Name }}</h4>
+<table class=""sg-table"" ng-repeat-end>
+    <tr>
+        <th>Application Id</th>
+        <td>{{ app.ApplicationId }}</td>
+    </tr>
+    <tr>
+        <th>Admin sections</th>
+        <td>
+            <ul ng-repeat=""sec in app.AdminSections"">
+                <li>{{ sec.Name + "" / "" + sec.Controller + "" / "" + sec.Action }}</li>
+            </ul>
+        </td>
+    </tr>
+    <tr>
+        <th>Is Master Application</th>
+        <td>{{ app.IsMasterApplication }}</td>
+    </tr>
+</table>
+");
 
 
         }

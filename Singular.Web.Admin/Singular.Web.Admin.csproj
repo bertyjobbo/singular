@@ -120,7 +120,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Content\Site.css" />
+    <EmbeddedResource Include="Content\Css\sg.css">
+      <DependentUpon>sg.less</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Content\Css\sg.min.css">
+      <DependentUpon>sg.css</DependentUpon>
+    </EmbeddedResource>
     <Content Include="Ng\controllers\configurationController.js" />
     <EmbeddedResource Include="Ng\controllers\configurationController.min.js">
       <DependentUpon>configurationController.js</DependentUpon>
@@ -502,6 +507,10 @@
     </Content>
     <Content Include="Ng\controllers\configurationController.min.js.map">
       <DependentUpon>configurationController.min.js</DependentUpon>
+    </Content>
+    <Content Include="Content\Css\sg.less" />
+    <Content Include="Content\Css\sg.css.map">
+      <DependentUpon>sg.css</DependentUpon>
     </Content>
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
