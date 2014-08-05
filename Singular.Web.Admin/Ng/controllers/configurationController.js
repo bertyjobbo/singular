@@ -1,22 +1,18 @@
 ﻿'use strict';
 
 // config controller
-(function ($a) {
+(function (app) {
 
-    $a.controller("configurationController", ["$scope", "configDataService", function ($scope, configDataService) {
+    app.controller("configurationController", ["$scope", "configDataService", function ($scope, configDataService) {
 
-        $scope.actions = {
+        $scope.indexAction = function () {
 
-            index: function () {
-
-                configDataService
-                    .getSingularConfigurationFactoryDataPromise()
-                    .then(function (data) {
-                        $scope.factoryData = data;
-                        console.log("scope.factoryData = ", $scope.factoryData);
-                    });
-
-            }
+            configDataService
+                .getSingularConfigurationFactoryDataPromise()
+                .then(function (data) {
+                    $scope.factoryData = data;
+                    console.log("scope.factoryData = ", $scope.factoryData);
+                });
 
         }
 

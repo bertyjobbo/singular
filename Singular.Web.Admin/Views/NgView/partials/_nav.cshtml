@@ -1,5 +1,26 @@
-﻿<nav ng-controller="navController">
-    <ul ng-repeat="item in navItems">
-        <li><a ng-href="{{ getSingularUrl(item.Controller, item.Action) }}" title="{{ item.Name }}">{{ item.Name }}</a></li>
+﻿<nav sg-nav>
+    <ul role="menu">
+        <li ng-repeat="item in navItems" role="menuitem">
+            <a ng-click="go($event,getSingularUrl(item.Controller, item.Action))" href="{{ getSingularUrl(item.Controller, item.Action) }}" title="{{ item.Name }}">{{ item.Name }}</a>
+        </li>
     </ul>
 </nav>
+@*<nav sg-nav>
+    <ul role="menu">
+        <li role="menuitem"><a href="/#/">Home</a></li>
+        <li role="combobox">
+            Examples
+            <ul role="menu">
+                <li role="menuitem"><a href="/#/example/get/sgroute/">sgRoute</a></li>
+                <li role="menuitem"><a href="/#/example/get/sgform/">sgForm</a></li>
+                <li role="menuitem"><a href="/#/example/get/sgtranslate/">sgTranslate</a></li>
+            </ul>
+        </li>
+    </ul>
+    <form><input type="search" role="search" /><button type="submit">Search</button></form>
+    <div>
+        <a role="button" href="http://google.co.uk">Button 1</a>
+        <button type="button">Button 2</button>
+        <input type="submit" value="Button 3" />
+    </div>
+</nav>*@

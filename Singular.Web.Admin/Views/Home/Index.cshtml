@@ -13,31 +13,34 @@
     <meta name="viewport" content="width=device-width" />
     <title>TBC title from object</title>
     <script> window.ROOT_URL = '@Url.Content("~/")';</script>
-    @(Html.EmbeddedInclude<NgViewController>(SingularAdminResources.SG_CSS, IncludeType.Stylesheet))
+    @(Html.EmbeddedInclude<NgViewController>(SingularAdminResources.NORMALIZE_CSS, IncludeType.Stylesheet))
+    @(Html.EmbeddedInclude<NgViewController>(SingularAdminResources.SG_CONTROLS_CSS_MIN, IncludeType.Stylesheet))
+    @(Html.EmbeddedInclude<NgViewController>(SingularAdminResources.SG_MIN_CSS, IncludeType.Stylesheet))
 </head>
     <body ng-app="Singular.Application">
-        <header>
-            <h1>Singular CMS</h1>
+        <header ng-controller="headerController">
+            <h1><span class="hidden">Singular CMS</span>[Logo]</h1>
+            <button sg-nav></button>
+            <ng-include src="'/Singular/NgView/partials/_nav/'"></ng-include>
         </header>
-        <ng-include src="'/Singular/NgView/partials/_nav/'"></ng-include>
-        <section sg-view="">
-        </section>
+        <section sg-view></section>
         <!-- ANGULAR -->
         @(Html.EmbeddedInclude<NgViewController>(SingularAdminResources.ANGULAR_MIN_JS, IncludeType.JavaScript))
         @(Html.EmbeddedInclude<NgViewController>(SingularAdminResources.ANGULAR_ROUTE_MIN_JS, IncludeType.JavaScript))
 
+        <!-- SG CONTROLS -->
+        @(Html.EmbeddedInclude<NgViewController>(SingularAdminResources.SG_ROUTE_MIN_JS, IncludeType.JavaScript))
+        @(Html.EmbeddedInclude<NgViewController>(SingularAdminResources.SG_ELEMENTS_MIN_JS, IncludeType.JavaScript))
+
         <!-- SINGULAR APP JS -->
         @(Html.EmbeddedInclude<NgViewController>(SingularAdminResources.SINGULAR_MIN_JS, IncludeType.JavaScript))
-        
+
         <!-- CONTROLLERS -->
-        @(Html.EmbeddedInclude<NgViewController>(SingularAdminResources.NAV_CONTROLLER_MIN_JS, IncludeType.JavaScript))
+        @(Html.EmbeddedInclude<NgViewController>(SingularAdminResources.HEADER_CONTROLLER_MIN_JS, IncludeType.JavaScript))
         @(Html.EmbeddedInclude<NgViewController>(SingularAdminResources.HOME_CONTROLLER_MIN_JS, IncludeType.JavaScript))
         @(Html.EmbeddedInclude<NgViewController>(SingularAdminResources.SYSTEM_CONTROLLER_MIN_JS, IncludeType.JavaScript))
         @(Html.EmbeddedInclude<NgViewController>(SingularAdminResources.CONFIGURATION_CONTROLLER_MIN_JS, IncludeType.JavaScript))
-        
-        <!-- DIRECTIVES -->
-        @(Html.EmbeddedInclude<NgViewController>(SingularAdminResources.SG_VIEW_DIRECTIVE_MIN_JS, IncludeType.JavaScript))
-        
+
         <!-- SERVICES -->
         @(Html.EmbeddedInclude<NgViewController>(SingularAdminResources.CONFIG_DATA_SERVICE_MIN_JS, IncludeType.JavaScript))
 

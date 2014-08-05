@@ -1,9 +1,9 @@
 ﻿'use strict';
 
 // SYSTEM CONTROLLER
-(function($a) {
+(function(app) {
 
-    $a.controller("systemController", [function() {
+    app.controller("systemController", [function() {
         
 
 

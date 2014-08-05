@@ -1,17 +1,10 @@
 ﻿'use strict';
 
 // HOME CONTROLLER
-(function ($a) {
+(function (app) {
 
-    $a.controller("homeController", ["$scope", function ($scope) {
-
-        $scope.actions = {
-            
-            index: function(id) {
-                console.log("route id is " + id);
-            }
-
-        };
+    app.controller("homeController", ["$scope", function ($scope) {
+       
 
     }]);
 

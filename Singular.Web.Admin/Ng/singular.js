@@ -4,34 +4,41 @@
 var Singular = {};
 
 // APP
-Singular.Application = angular.module("Singular.Application", ["ngRoute"]);
+Singular.Application = angular.module("Singular.Application", ["ngRoute","sgRoute","sgElements"]);
 
 // APP CONFIG
-(function ($a) {
+(function (app) {
 
     // helper to get root url
-    $a.getRootedUrl = function (restOfUrl) {
+    app.getRootedUrl = function (restOfUrl) {
         return (window.ROOT_URL + restOfUrl).replace("//", "/");
     }
 
-    // route provider config
-    $a.config(["$routeProvider", function ($routeProvider) {
+    // configure sg routes
+    app.config(['sgRouteConfigProvider', '$routeProvider', function (sgRouteConfigProvider, $routeProvider) {
 
-        $a.configureRootForSgView($routeProvider);
+        sgRouteConfigProvider
+            .configureViewRequestMethod(function (controller, action) {
+                //return "Ng/Views/" + controller + "/" + action + ".html";
+               return app.getRootedUrl("singular/ngview/" + controller + "/" + action + "/");
+            })
+            .onPageNotFound("/system/pagenotfound/")
+            .onError("/system/error/")
+            .finalize($routeProvider);
 
     }]);
 
     // factory data
-    $a.constant("singularConfigurationFactoryData", undefined);
+    app.constant("singularConfigurationFactoryData", undefined);
 
     // run
-    $a.run(["$rootScope", function ($rootScope) {
+    app.run(["$rootScope", function ($rootScope) {
 
         // set internal url method
         $rootScope.getSingularUrl = function (controller, action, id) {
             
             // get root
-            var root = $a.getRootedUrl("");
+            var root = app.getRootedUrl("");
 
             // check
             if (controller !== undefined && controller !== null && controller.toLowerCase() === "home" && action !== undefined && action !== null && action.toLowerCase() === "index")
@@ -47,30 +54,30 @@ Singular.Application = angular.module("Singular.Application", ["ngRoute"]);
         }
 
         // get external
-        $rootScope.getRootedUrl = $a.getRootedUrl;
+        $rootScope.getRootedUrl = app.getRootedUrl;
 
     }]);
 
 
-    // ERROR HANDLING
-    $a.factory("$exceptionHandler", ["$injector", function ($injector) {
+    //// ERROR HANDLING
+    //app.factory("$exceptionHandler", ["$injector", function ($injector) {
 
-        // Override error handling
-        return function (exception, cause) {
+    //    // Override error handling
+    //    return function (exception, cause) {
 
-            // log
-            console.log("Exception", exception);
-            console.log("Cause", cause);
+    //        // log
+    //        console.log("Exception", exception);
+    //        console.log("Cause", cause);
 
-            //// alert
-            //alert("Error:\n" + (exception.message === undefined ? exception : exception.message) + "\n\nCause:\n" + cause);
+    //        //// alert
+    //        //alert("Error:\n" + (exception.message === undefined ? exception : exception.message) + "\n\nCause:\n" + cause);
 
-            // redirect
-            var lction = $injector.get("$location");
-            if (lction) lction.path("/system/error/");
-        };
+    //        // redirect
+    //        var lction = $injector.get("$location");
+    //        if (lction) lction.path("/system/error/");
+    //    };
 
-    }]);
+    //}]);
 
 
 })(Singular.Application)

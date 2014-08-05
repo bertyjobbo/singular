@@ -19,14 +19,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BoilerPlateMvcWebApiSite", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Singular.Web.Admin.JsTests", "Singular.Web.Admin.JsTests\Singular.Web.Admin.JsTests.csproj", "{7FEA4250-538B-4A37-9909-F2AE03FBB948}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{FBEFC98B-4EE4-41D7-A7AB-65B08AAB52B8}"
-	ProjectSection(SolutionItems) = preProject
-		.nuget\NuGet.Config = .nuget\NuGet.Config
-		.nuget\NuGet.exe = .nuget\NuGet.exe
-		.nuget\NuGet.targets = .nuget\NuGet.targets
-		.nuget\packages.config = .nuget\packages.config
-	EndProjectSection
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Singular.Common", "Singular.Common\Singular.Common.csproj", "{2D6996A8-18CF-4A30-BF30-08C0A9A74963}"
 EndProject
 Global

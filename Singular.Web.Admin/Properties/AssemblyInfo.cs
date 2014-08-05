@@ -40,22 +40,26 @@ using Singular.Web.Admin.Defaults;
 
 // css
 [assembly: System.Web.UI.WebResource(SingularAdminResources.SG_MIN_CSS, "text/css")]
+[assembly: System.Web.UI.WebResource(SingularAdminResources.SG_CONTROLS_CSS_MIN, "text/css")]
+[assembly: System.Web.UI.WebResource(SingularAdminResources.NORMALIZE_CSS, "text/css")]
 
 // angular
 [assembly: System.Web.UI.WebResource(SingularAdminResources.ANGULAR_MIN_JS, "application/x-javascript")]
 [assembly: System.Web.UI.WebResource(SingularAdminResources.ANGULAR_ROUTE_MIN_JS, "application/x-javascript")]
 
+// singular controls
+[assembly: System.Web.UI.WebResource(SingularAdminResources.SG_ROUTE_MIN_JS, "application/x-javascript")]
+[assembly: System.Web.UI.WebResource(SingularAdminResources.SG_ELEMENTS_MIN_JS, "application/x-javascript")]
+
+
 // singular
 [assembly: System.Web.UI.WebResource(SingularAdminResources.SINGULAR_MIN_JS, "application/x-javascript")]
 
 // controllers
-[assembly: System.Web.UI.WebResource(SingularAdminResources.NAV_CONTROLLER_MIN_JS, "application/x-javascript")]
+[assembly: System.Web.UI.WebResource(SingularAdminResources.HEADER_CONTROLLER_MIN_JS, "application/x-javascript")]
 [assembly: System.Web.UI.WebResource(SingularAdminResources.HOME_CONTROLLER_MIN_JS, "application/x-javascript")]
 [assembly: System.Web.UI.WebResource(SingularAdminResources.SYSTEM_CONTROLLER_MIN_JS, "application/x-javascript")]
 [assembly: System.Web.UI.WebResource(SingularAdminResources.CONFIGURATION_CONTROLLER_MIN_JS, "application/x-javascript")]
-
-// directives
-[assembly: System.Web.UI.WebResource(SingularAdminResources.SG_VIEW_DIRECTIVE_MIN_JS, "application/x-javascript")]
 
 // services
 [assembly: System.Web.UI.WebResource(SingularAdminResources.CONFIG_DATA_SERVICE_MIN_JS, "application/x-javascript")]
